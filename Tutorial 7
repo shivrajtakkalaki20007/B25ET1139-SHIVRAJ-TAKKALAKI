@@ -1,0 +1,58 @@
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class String {
+    char *str;
+
+public:
+    // Default constructor
+    String() {
+        str = new char[1];
+        str[0] = '\0';
+    }
+
+    // Accept a string from the user
+    void Accept() {
+        char temp[100];
+        cout << "Enter a string: ";
+        cin.getline(temp, 100);
+
+        delete[] str;  // Free previously allocated memory
+        str = new char[strlen(temp) + 1];
+        strcpy(str, temp);
+    }
+
+    // Copy constructor (deep copy)
+    String(const String &s) {
+        str = new char[strlen(s.str) + 1];
+        strcpy(str, s.str);
+    }
+
+    // Display the string
+    void Display() {
+        cout << str << endl;
+    }
+
+    // Destructor
+    ~String() {
+        delete[] str;
+    }
+};
+
+int main() {
+    String s1;       // Calls the default constructor
+    s1.Accept();     // Accept the original string
+
+    String s2(s1);   // Calls the copy constructor
+
+    cout << "Original string: ";
+    s1.Display();
+
+    cout << "Copied string: ";
+    s2.Display();
+
+    return 0;
+}
+```
