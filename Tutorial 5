@@ -1,0 +1,31 @@
+```cpp
+#include <iostream>
+using namespace std;
+
+class Conversion {
+public:
+    void convert(float meters) {
+        cout << "Centimeters = " << meters * 100 << " cm" << endl;
+    }
+
+    void convert(double kilometers) {
+        cout << "Meters = " << kilometers * 1000 << " m" << endl;
+    }
+};
+
+int main() {
+    Conversion c;
+    float m;
+    double km;
+
+    cout << "Enter distance in meters: ";
+    cin >> m;
+    c.convert(m);
+
+    cout << "Enter distance in kilometers: ";
+    cin >> km;
+    c.convert(km);
+
+    return 0;
+}
+```
