@@ -1,0 +1,60 @@
+
+#include <iostream>
+using namespace std;
+
+// Base class
+class Employee {
+public:
+    virtual void calculatePay() {
+        cout << "Calculating employee pay" << endl;
+    }
+};
+
+// Derived class
+class PermanentEmployee : public Employee {
+public:
+    void calculatePay() override {
+        float salary;
+        cout << "Enter monthly salary: ";
+        cin >> salary;
+        cout << "Permanent Employee Pay: Rs. " << salary << endl;
+    }
+};
+
+// Derived class
+class ContractEmployee : public Employee {
+public:
+    void calculatePay() override {
+        float rate, hours;
+        cout << "Enter hourly rate and hours worked: ";
+        cin >> rate >> hours;
+        cout << "Contract Employee Pay: Rs. " 
+             << rate * hours << endl;
+    }
+};
+
+int main() {
+    Employee *e;
+    PermanentEmployee p;
+    ContractEmployee c;
+    int choice;
+
+    cout << "1. Permanent Employee\n";
+    cout << "2. Contract Employee\n";
+    cout << "Enter choice: ";
+    cin >> choice;
+
+    if (choice == 1)
+        e = &p;
+    else if (choice == 2)
+        e = &c;
+    else {
+        cout << "Invalid choice!";
+        return 0;
+    }
+
+    e->calculatePay();
+
+    return 0;
+}
+
