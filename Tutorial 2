@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main() {
+    int sum = 0;
+
+    std::cout << "Even numbers between 1 and 50:\n";
+
+    for (int i = 1; i <= 50; i++) {
+        if (i % 2 == 0) {
+            std::cout << i << " ";
+            sum += i;
+        }
+    }
+
+    std::cout << "\n\nThe sum of even numbers between 1 and 50 is: "
+              << sum << std::endl;
+
+    return 0;
+}
