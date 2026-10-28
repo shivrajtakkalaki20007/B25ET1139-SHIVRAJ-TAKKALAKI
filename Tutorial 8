@@ -1,0 +1,67 @@
+```cpp
+#include <iostream>
+using namespace std;
+
+// Base class for employee basic information
+class Employee {
+protected:
+    int id;
+    string name;
+
+public:
+    void getEmployeeInfo() {
+        cout << "Enter Employee ID: ";
+        cin >> id;
+        cout << "Enter Employee Name: ";
+        cin >> name;
+    }
+
+    void displayEmployeeInfo() {
+        cout << "\nEmployee ID: " << id;
+        cout << "\nEmployee Name: " << name;
+    }
+};
+
+// Base class for shift information
+class Shift {
+protected:
+    float hours[7];
+
+public:
+    void getShiftInfo() {
+        cout << "\nEnter working hours for 7 days:\n";
+        for (int i = 0; i < 7; i++) {
+            cout << "Day " << i + 1 << ": ";
+            cin >> hours[i];
+        }
+    }
+
+    float calculateHours() {
+        float total = 0;
+        for (int i = 0; i < 7; i++) {
+            total += hours[i];
+        }
+        return total;
+    }
+};
+
+// Multiple inheritance
+class EmployeeWork : public Employee, public Shift {
+public:
+    void display() {
+        displayEmployeeInfo();
+        cout << "\nTotal Working Hours in a Week: "
+             << calculateHours() << " hours\n";
+    }
+};
+
+int main() {
+    EmployeeWork e;
+
+    e.getEmployeeInfo();
+    e.getShiftInfo();
+    e.display();
+
+    return 0;
+}
+```
