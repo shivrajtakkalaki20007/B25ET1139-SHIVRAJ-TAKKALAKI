@@ -1,0 +1,52 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    // Step 1: Create and write to source.txt
+    ofstream create("source.txt");
+
+    if (!create)
+    {
+        cout << "Error creating source file!";
+        return 1;
+    }
+
+    create << "Hello World!\n";
+    create << "This is a file copying program.";
+    create.close();
+
+    // Step 2: Open source file for reading
+    ifstream fin("source.txt");
+
+    if (!fin)
+    {
+        cout << "Error opening source file!";
+        return 1;
+    }
+
+    // Step 3: Open destination file for writing
+    ofstream fout("destination.txt");
+
+    if (!fout)
+    {
+        cout << "Error opening destination file!";
+        return 1;
+    }
+
+    // Step 4: Copy contents character by character
+    char ch;
+
+    while (fin.get(ch))
+    {
+        fout.put(ch);
+    }
+
+    fin.close();
+    fout.close();
+
+    cout << "File copied successfully!";
+
+    return 0;
+}
